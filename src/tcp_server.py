@@ -5,3 +5,27 @@ import socket
 # The server listens for incoming connections, receives data, and sends responses.
 
 
+# create the server socket
+server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+
+# bind the server to a specific address and port
+server_socket.bind(('localhost', 65432)) # Host on localhost and port 65432
+
+# listen for incoming connections
+server_socket.listen(1)
+print("Server is waiting for a connection...")
+
+# accept incoming connections
+conn, addr = server_socket.accept()
+print(f"Connected byt {addr}")
+
+# keep the server running and waiting for data
+while True:
+    data = conn.revr(1024) # receive data from the client
+    if not data:
+        break  # exit the loop if no data is received
+    conn.sendall(data)  # echo the received data back to the client
+
+# close the connection
+conn.close()
