@@ -22,11 +22,12 @@ try:
 
     # keep the server running and waiting for data
     while True:
-        data = conn.recv(1024) # receive data from the client
+        data = conn.recv(4096) # receive data from the client
         if not data:
             break  # exit the loop if no data is received
+        print(f"Received: {len(data)} bytes from the client")
         conn.sendall(data)  # echo the received data back to the client
-        
+
 except Exception as e:
     print(f"Error: {e}")
 

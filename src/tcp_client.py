@@ -11,18 +11,30 @@ try:
     # connect to the server at localhost on port 65432
     client_socket.connect(('localhost', 65432))
 
-    # message to be sent to the server
-    message = "Hello, Server!"
+    # List of message sizes in bytes 
+    message_sizes = [64, 128, 512, 1024, 2048, 4096]
 
-    # Measure the round-trip time (RTT)
-    start_time = time.perf_counter()
-    client_socket.sendall(message.encode())  # send the message to the server
+    # loop through each message size and send the message
 
-    # receive the echoed message from the server
-    data = client_socket.recv(1024)  # buffer size of 1024 bytes
-    end_time = time.perf_counter()
+    for size in message_sizes:
+        message = "A" * size
 
-    print(f"Received from server: {data.decode()}")
+        # measure RTT (round-trip time)
+        start_time = time.perf_counter()
+
+        client_socket.sendall(message.encode())
+
+        # receive the response from the server
+        data = client_socket.recv(1024)
+        end_time = time.perf_counter()
+
+        print(f"Sent {size} bytes, received: {data.decode()}")
+
+        # calculate and print the RTT
+        rtt = end_time - start_time
+        print(f"RTT: for {size} bytes: {rtt:.6f} seconds\n")
+        
+
 except Exception as e:
     print(f"Error: {e}")
 
