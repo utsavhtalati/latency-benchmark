@@ -12,7 +12,8 @@ try:
     client_socket.connect(('localhost', 65432))
 
     # List of message sizes in bytes 
-    message_sizes = [64, 128, 512, 1024, 2048, 4096]
+    # 4KB, 8KB, 16KB, 32KB, 64KB, 1MB, 5MB (TBD)
+    message_sizes = [4096, 8192, 16384, 32768, 65536, 1048576]
 
     # loop through each message size and send the message
 
@@ -33,7 +34,7 @@ try:
         # calculate and print the RTT
         rtt = end_time - start_time
         print(f"RTT: for {size} bytes: {rtt:.6f} seconds\n")
-        
+
 
 except Exception as e:
     print(f"Error: {e}")
