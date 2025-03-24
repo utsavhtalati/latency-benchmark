@@ -22,7 +22,7 @@ print(f"Connected byt {addr}")
 
 # keep the server running and waiting for data
 while True:
-    data = conn.revr(1024) # receive data from the client
+    data = conn.recv(1024) # receive data from the client
     if not data:
         break  # exit the loop if no data is received
     conn.sendall(data)  # echo the received data back to the client
