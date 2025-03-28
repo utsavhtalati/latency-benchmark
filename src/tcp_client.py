@@ -10,7 +10,7 @@ def send_with_header(sock, message):
     sock.sendall(message_length.to_bytes(8, 'big'))
     sock.sendall(message)
 
-# Client setup
+# Client 
 try:
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
