@@ -6,7 +6,7 @@ This project is designed to measure and analyze the latency of various systems, 
 - 📊 **Accurate Measurements**: Capture precise latency metrics.
 - ⚡ **Customizable Tests**: Tailor benchmarks to your specific use case.
 - 📈 **Detailed Reports**: Visualize and analyze results with ease.
-- 🔧 **Cross-Platform Support**: Works seamlessly across multiple environments.
+- 🔧 **Cross-Platform Support**: Works seamlessly across multiple environment.
 
 ## Getting Started
 
